@@ -25,7 +25,9 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Build
-        run: echo "test" > .build/release/rada
+        run: |
+          mkdir -p .build/release
+          echo "test" > .build/release/rada
 
       - name: Make tarball
         run: tar -czf rada_${{ env.VERSION }}.tar.gz \
