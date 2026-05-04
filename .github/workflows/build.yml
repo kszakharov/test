@@ -30,11 +30,12 @@ jobs:
           echo "test" > .build/release/rada
 
       - name: Make tarball
-        run: tar -czf rada_${{ env.VERSION }}.tar.gz \
-          -C . CHANGELOG.md \
-          -C . LICENSE \
-          -C . README.md \
-          -C .build/release rada
+        run: |
+          tar -czf rada_${{ env.VERSION }}.tar.gz \
+            -C . CHANGELOG.md \
+            -C . LICENSE \
+            -C . README.md \
+            -C .build/release rada
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
