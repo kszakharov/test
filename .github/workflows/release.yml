@@ -40,14 +40,14 @@ jobs:
           echo "release_notes<<EOF" >> $GITHUB_OUTPUT
           cat RELEASE_NOTES.md >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-      - name: Generate checksum
+      - name: Generate checksums
         run: |
-          sha256sum dist/rada_${{ env.VERSION }}.tar.gz | awk '{print $1}' > dist/rada_${{ env.VERSION }}_checksums.txt
+          sha256sum dist/rada_${{ env.VERSION }}.tar.gz >> dist/rada_${{ env.VERSION }}_checksums.txt
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
           body: ${{ steps.changelog.outputs.release_notes }}
           files: dist/*
           generate_release_notes: false
