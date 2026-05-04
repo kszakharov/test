@@ -44,7 +44,7 @@ jobs:
         run: |
           sha256sum dist/rada_${{ env.VERSION }}.tar.gz | awk '{print $1}' > dist/rada_${{ env.VERSION }}_checksums.txt
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
