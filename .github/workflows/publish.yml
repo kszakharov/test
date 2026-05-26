@@ -1,0 +1,16 @@
+name: Trigger autobump
+
+on:
+  workflow_dispatch:
+    inputs:
+      formulae:
+        description: Custom list of formulae to livecheck and bump if outdated
+        required: false
+        type: string
+
+jobs:
+  bump:
+    uses: kszakharov/homebrew-tap/.github/workflows/autobump.yml@main
+    with:
+      formulae: "rada"
+    secrets: inherit
