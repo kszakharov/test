@@ -1,16 +1,17 @@
-name: Trigger autobump
+name: Trigger upstream autobump
 
 on:
   workflow_dispatch:
-    inputs:
-      formulae:
-        description: Custom list of formulae to livecheck and bump if outdated
-        required: false
-        type: string
 
 jobs:
-  bump:
-    uses: kszakharov/homebrew-tap/.github/workflows/autobump.yml@main
-    with:
-      formulae: "rada"
-    secrets: inherit
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger autobump workflow
+        #env:
+         # GH_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
+        run: |
+          gh workflow run autobump.yml \
+            --repo kszakharov/homebrew-tap \
+            -f formulae=rada
