@@ -14,4 +14,4 @@ jobs:
         run: |
           gh workflow run autobump.yml \
             --repo kszakharov/homebrew-tap \
-            -f formulae=rada
+            -f formulae="rada ralphex testtest"
