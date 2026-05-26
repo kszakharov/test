@@ -9,8 +9,8 @@ jobs:
 
     steps:
       - name: Trigger autobump workflow
-        #env:
-         # GH_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
+        env:
+           GH_TOKEN: "${{ github.token }}"
         run: |
           gh workflow run autobump.yml \
             --repo kszakharov/homebrew-tap \
