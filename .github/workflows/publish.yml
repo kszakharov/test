@@ -13,6 +13,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          gh --version
           RUN_URL=$(
             gh workflow run autobump.yml \
               --repo kszakharov/homebrew-tap \
