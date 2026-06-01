@@ -13,13 +13,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          gh --version
           RUN_URL=$(
             gh workflow run autobump.yml \
               --repo kszakharov/homebrew-tap \
               -f formulae="${{ github.event.repository.name }}"
           )
           RUN_ID=$(basename "$RUN_URL")
-          echo "URL: $RUN_URL"
+          echo "$RUN_URL"
 
-          gh run view --repo kszakharov/homebrew-tap "$RUN_ID" --exit-status
+          gh run watch --repo kszakharov/homebrew-tap "$RUN_ID" --exit-status
