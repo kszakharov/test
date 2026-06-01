@@ -21,4 +21,4 @@ jobs:
           RUN_ID=$(basename "$RUN_URL")
           echo "$RUN_URL"
 
-          gh run watch --repo kszakharov/homebrew-tap "$RUN_ID" --exit-status
+          gh run watch --repo kszakharov/homebrew-tap "$RUN_ID" --exit-status --compact
